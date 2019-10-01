@@ -24,21 +24,20 @@ EXER05*   27-09-2019  |COBOL EXER05   |RELATORIO MENSAL      |
       *
 EXER02     SELECT ENTRADA
 EXER02         ASSIGN TO
-EXER02         'C:\cobol\BECA\Entrada01.txt'
+EXER02         'C:\CBL\BECA\Entrada01.txt'
 EXER02         ORGANISATION IS LINE SEQUENTIAL
 EXER02         FILE STATUS IS WSN-FS-ENTRADA.
 
 EXER06     SELECT ENTRADA02
 EXER06         ASSIGN TO
-EXER06         'C:\cobol\BECA\Entrada02.txt'
+EXER06         'C:\CBL\BECA\Entrada02.txt'
 EXER06          ORGANISATION IS LINE SEQUENTIAL
 EXER06          FILE STATUS IS WSN-FS-ENTRADA02.
 
-EXER04     SELECT SAIDA ASSIGN TO 'C:\cobol\BECA\Saida01.txt'
+EXER04     SELECT SAIDA ASSIGN TO 'C:\CBL\BECA\Saida01.txt'
 EXER04            ORGANIZATION IS LINE SEQUENTIAL
 EXER04            ACCESS IS SEQUENTIAL
 EXER04            FILE STATUS IS WSN-FS-SAIDA.
-
 
 EXER02 DATA DIVISION.
       *
@@ -95,8 +94,9 @@ EXER02         88 SW-FIM-SIM                 VALUE 'S'.
        01  WCA-SUBTITULO            PIC X(84) VALUES
            '*               CLIENTES COM SALDO MAIOR QUE R$ 100.000,00
       -    '                       *'.
-       01  WCA-RESUMO-CONTAS        PIC X(53) VALUES
-               '*               RESUMO DAS CONTAS                   *'.
+       01  WCA-RESUMO-CONTAS        PIC X(84) VALUES
+           '*                     RESUMO DAS CONTAS
+      -     '                       *'.
 
       ********************CONFIGURAÇAO DE DATA ************************
 EXER05 01  WS-DATA PIC X(8).
@@ -142,21 +142,21 @@ EXER04     05 FILLER               PIC X(04) VALUES 'R$  '.
 EXER04     05 S01-SLD-CTA          PIC ZZZ.ZZ9,99 VALUES ZEROS.
 
       *********************************  SAIDA 02   *******************
-       01 WSA-SAIDA02.
-           05 REL-COD-CTA          PIC 9(04) VALUES ZEROS.
-           05 REL-NOME-CLIENTE     PIC X(17) VALUES SPACES.
-           05 REL-COD-CID          PIC X(04) VALUES ZEROS.
-           05 REL-DATA-CONTA       PIC 9(10) VALUES ZEROS.
-
+      * 01 WSA-SAIDA02.
+      *     05 REL-COD-CTA          PIC 9(04) VALUES ZEROS.
+      *     05 REL-NOME-CLIENTE     PIC X(17) VALUES SPACES.
+      *     05 REL-COD-CID          PIC X(04) VALUES ZEROS.
+      *     05 REL-DATA-CONTA       PIC 9(10) VALUES ZEROS.
       ******************************************************************
 
-
        05 WSA-TOTAL-CC.
+           10 FILLER               PIC X(15) VALUES SPACES.
 EXER05     10 FILLER               PIC X(33) VALUES
 EXER05         '   TOTAL DE CONTAS CORRENTES ='.
 EXER05     10 WS-COUNT-CC          PIC 9(02) VALUES ZEROS.
 
 EXER05 01  WSA-TOTAL-POUP.
+           10 FILLER               PIC X(15) VALUES SPACES.
 EXER05     10 FILLER               PIC X(33) VALUES
 EXER05         '   TOTAL DE POUPANCAS        ='.
 EXER05     10 WS-COUNT-POUP        PIC 9(02) VALUES ZEROS.
@@ -165,24 +165,28 @@ EXER05     10 WS-COUNT-POUP        PIC 9(02) VALUES ZEROS.
 EXER05 01 WS-SALDO-ALL-CC          PIC 9(9)V99 VALUES ZEROS.
 EXER05 01 WS-SALDO-ALL-CP          PIC 9(9)V99 VALUES ZEROS.
 EXER05 01 WSA-SALDO-TOTAL-CC.
+           10 FILLER               PIC X(31) VALUES SPACES.
 EXER05     10 FILLER               PIC X(39) VALUES
 EXER05         '   SALDO TOTAL DE CONTA CORRENTE = R$  '.
 EXER05     10 WCA-MASCARA-MOEDA      PIC ZZZ.ZZZ.ZZ9,99 VALUES ZEROS.
 
 EXER05 01 WSA-SALDO-TOTAL-POUP.
+           10 FILLER               PIC X(31) VALUES SPACES.
 EXER05     10 FILLER               PIC X(39) VALUES
 EXER05         '   SALDO TOTAL DE POUPANCA       = R$'.
 EXER05     10  WCA-MASC-MOEDA-POUP      PIC ZZZ.ZZZ.ZZ9,99 VALUES ZEROS.
 
 EXER05 01 WSA-SOMA-TOTAIS          PIC 9(9)V99 VALUES ZEROS.
 EXER05 01 WSA-TOTAL-CONTAS.
+           10 FILLER               PIC X(31) VALUES SPACES.
 EXER05     10 FILLER               PIC X(39)   VALUES
 EXER05          '   SALDO TOTAL DAS CONTAS        = R$'.
 EXER05     10 WCA-MASC-MOEDA-TOTAL  PIC ZZZ.ZZZ.ZZ9,99 VALUES ZEROS.
 
 EXER05 01 WSA-DETALHE.
-EXER05     10 FILLER               PIC X(53)   VALUES
-EXER05         '*            DETALHES DE GERENTE                    *'.
+EXER05     10 FILLER               PIC X(84)   VALUES
+EXER05     '*                  DETALHES DE GERENTE
+      -    '                       *'.
 
 EXER05 01 WSA-DATELHE              PIC X(43)   VALUES
 EXER05         '  CLIENTE COM MAIOR SALDO EM CONTA CORRENTE'.
@@ -192,38 +196,53 @@ EXER05 01 WCA-DETALHE-CC-MS        PIC X(43)   VALUES
 EXER05         '  CLIENTE COM MENOR SALDO EM CONTA CORRENTE'.
 EXER05 01 WCA-DETALHE-CP-MS         PIC X(43)  VALUES
                '  CLIENTE COM MENOR SALDO EM POUPANCA'.
-
+      ****** ESTRUTURA DO CLIENTE COM MAIOR SALDO EM CONTA CORRENTE*****
 EXER05 01 WSA-AUXILIAR             PIC ZZZ.ZZ9,99 VALUES ZEROS.
-EXER05 01 WSA-AUXILIAR-COD         PIC 9(4)       VALUES ZEROS.
+EXER05 01 WSA-AUXILIAR-COD         PIC 9(04)      VALUES ZEROS.
 EXER05 01 WSA-MAIOR-SDO-CC.
-EXER05     10 FILLER               PIC X(4)       VALUES SPACES.
+EXER05     10 FILLER               PIC X(43)      VALUES SPACES.
 EXER05     10 S02-COD-CTA          PIC 9(04)      VALUES ZEROS.
-EXER05     10 FILLER               PIC X(6)       VALUES '   R$ '.
+EXER05     10 FILLER               PIC X(04)      VALUES SPACES.
+EXER06     10 S02-NOME-CLI         PIC X(17)      VALUES SPACES.
+EXER06     10 FILLER               PIC X(6)       VALUES '   R$ '.
 EXER05     10 S02-SLD-CTA          PIC ZZZ.ZZ9,99 VALUES ZEROS.
-
+      ******************************************************************
+      *        CLIENTE COM MAIOR SALDO EM CONTA POUPANÇA               *
+      ******************************************************************
 EXER05 01 WSA-AUXILIAR-CP          PIC ZZZ.ZZ9,99 VALUES ZEROS.
 EXER05 01 WSA-AUXILIAR-COD-CP      PIC 9(4)       VALUES ZEROS.
 EXER05 01 WCA-MAIOR-SALDO-CP.
-EXER05     10 FILLER               PIC X(4)        VALUES SPACES.
+EXER05     10 FILLER               PIC X(43)       VALUES SPACES.
 EXER05     10 S03-COD-CTA          PIC 9(04)       VALUES ZEROS.
+           10 FILLER               PIC X(04)       VALUES SPACES.
+           10 S03-NOME-CLI         PIC X(17)       VALUES SPACES.
 EXER05     10 FILLER               PIC X(6)        VALUES '   R$ '.
 EXER05     10 S03-SLD-CTA          PIC ZZZ.ZZ9,99  VALUES ZEROS.
-
+      ******************************************************************
+      *         CLIENTE COM MENOR SALDO EM CONTA CORRENTE              *
+      ******************************************************************
 EXER05 01 WSA-AUX-MENOR-CC         PIC 9(6)V99     VALUES 999999,00.
 EXER05 01 WSA-AUX-MENOR-COD-CC     PIC 9(4)        VALUES ZEROS.
 EXER05 01 WCA-MENOR-SALDO-CC.
-EXER05     10 FILLER               PIC X(4)        VALUES SPACES.
+EXER05     10 FILLER               PIC X(43)       VALUES SPACES.
 EXER05     10 S04-COD-CTA          PIC 9(04)       VALUES ZEROS.
+           10 FILLER               PIC X(04)       VALUES SPACES.
+           10 S04-NOME-CLI         PIC X(17)       VALUES SPACES.
 EXER05     10 FILLER               PIC X(6)        VALUES '   R$ '.
 EXER05     10 S04-SLD-CTA          PIC ZZZ.ZZ9,99  VALUES ZEROS.
-
+      ******************************************************************
+      *          CLIENTE COM MENOR SALDO EM CONTA POUPANÇA             *
+      ******************************************************************
 EXER05 01 WSA-AUX-MENOR-CP         PIC 9(6)V99     VALUES 999999,00.
 EXER05 01 WSA-AUX-MENOR-COD-CP     PIC 9(4)        VALUES ZEROS.
 EXER05 01 WCA-MENOR-SALDO-CP.
-EXER05     10 FILLER               PIC X(4)        VALUES SPACES.
+EXER05     10 FILLER               PIC X(43)        VALUES SPACES.
 EXER05     10 S05-COD-CTA          PIC 9(04)       VALUES ZEROS.
+           10 FILLER               PIC X(04)       VALUES SPACES.
+           10 S05-NOME-CLI         PIC X(17)       VALUES SPACES.
 EXER05     10 FILLER               PIC X(6)        VALUES '   R$ '.
 EXER05     10 S05-SLD-CTA          PIC ZZZ.ZZ9,99  VALUES ZEROS.
+      ******************************************************************
       *----------------------------
        PROCEDURE DIVISION.
       *----------------------------
@@ -285,8 +304,6 @@ EXER05     INITIALIZE WS-COUNT-CC.
 EXER05     INITIALIZE WS-SALDO-ALL-CC.
 EXER05     INITIALIZE WSA-SOMA-TOTAIS.
 
-
-
 EXER05******************RELATORIO CABEÇALHO.***************************
 EXER05     PERFORM 2000-INSERI-LINHA-DESIGN
 
@@ -328,7 +345,7 @@ EXER06         SET SW-FIM-SIM-02 TO TRUE
 EXER06     END-READ.
 EXER06 1200-LER-ENTRADA-ARQ02-FIM.
       *     EXIT.
-      ***************************** FIM DA LEITURA DO ARQUIVO02*********
+      ********************* FIM DA LEITURA DO ARQUIVO02****************
 
       *-----------------------------------------------------------------
        3000-PROCESSO.
@@ -343,58 +360,67 @@ EXER05         MOVE '    C/C'  TO TIP-CTA
 EXER05         ADD 1 TO WS-COUNT-CC
 EXER05         COMPUTE  WS-SALDO-ALL-CC = WS-SALDO-ALL-CC + SLD-CTA
 EXER05         IF SLD-CTA GREATER THAN WSA-AUXILIAR THEN
-EXER05             MOVE COD-CTA TO WSA-AUXILIAR-COD
-EXER05             MOVE SLD-CTA TO WSA-AUXILIAR
+EXER05             MOVE COD-CTA    TO WSA-AUXILIAR-COD
+                   MOVE E2-NOM-CLI TO S02-NOME-CLI
+EXER05             MOVE SLD-CTA    TO WSA-AUXILIAR
 EXER05         END-IF
 EXER05         IF SLD-CTA LESS THAN WSA-AUX-MENOR-CC THEN
-EXER05             MOVE COD-CTA TO WSA-AUX-MENOR-COD-CC
-EXER05             MOVE SLD-CTA TO WSA-AUX-MENOR-CC
+EXER05             MOVE COD-CTA    TO WSA-AUX-MENOR-COD-CC
+                   MOVE E2-NOM-CLI TO S04-NOME-CLI
+EXER05             MOVE SLD-CTA    TO WSA-AUX-MENOR-CC
 EXER05         END-IF
 EXER05     ELSE
 EXER05        MOVE '    POUP' TO TIP-CTA
 EXER05        ADD 1 TO WS-COUNT-POUP
 EXER05        COMPUTE WS-SALDO-ALL-CP = WS-SALDO-ALL-CP + SLD-CTA
 EXER05        IF SLD-CTA GREATER THAN WSA-AUXILIAR THEN
-EXER05            MOVE COD-CTA TO WSA-AUXILIAR-COD-CP
-EXER05            MOVE SLD-CTA TO WSA-AUXILIAR-CP
+EXER05            MOVE COD-CTA     TO WSA-AUXILIAR-COD-CP
+                  MOVE E2-NOM-CLI  TO  S03-NOME-CLI
+EXER05            MOVE SLD-CTA     TO WSA-AUXILIAR-CP
 EXER05         END-IF
 EXER05         IF SLD-CTA LESS THAN WSA-AUX-MENOR-CP THEN
-EXER05             MOVE COD-CTA TO WSA-AUX-MENOR-COD-CP
-EXER05             MOVE SLD-CTA TO WSA-AUX-MENOR-CP
+EXER05             MOVE COD-CTA    TO WSA-AUX-MENOR-COD-CP
+                   MOVE E2-NOM-CLI TO S05-NOME-CLI
+EXER05             MOVE SLD-CTA    TO WSA-AUX-MENOR-CP
 EXER05         END-IF
 EXER05     END-IF.
 
-           DISPLAY COD-CTA
-           DISPLAY E2-COD-CTA
-           DISPLAY E2-NOM-CLI
 
-           IF COD-CTA EQUALS E2-COD-CTA
+      ******************************************************************
+      *                    B A T I M E N T O
+      ******************************************************************
+
+EXER06     IF COD-CTA EQUALS E2-COD-CTA
+
       *        CONDICIONAL PARA RESUMO DAS CONTAS ACIMA DE 100.000.00.
 EXER05         IF SLD-CTA GREATER THAN 100000,00
 EXER03             MOVE COD-CTA            TO S01-COD-CTA
-                   MOVE E2-NOM-CLI         TO S01-NOME-CLI
-                   MOVE E2-DAT-INI         TO S01-DATA-CTA
+EXER06             MOVE E2-NOM-CLI         TO S01-NOME-CLI
+EXER06             MOVE E2-DAT-INI         TO S01-DATA-CTA
 EXER03             MOVE TIP-CTA            TO S01-TIP-CTA
 EXER03             MOVE SLD-CTA            TO S01-SLD-CTA
 EXER05             MOVE WSA-SAIDA          TO REG-SAIDA
 EXER05             WRITE REG-SAIDA
 EXER05             END-WRITE
 
-                   PERFORM 1100-LER-ENTRADA
-                      THRU 1100-LER-ENTRADA-FIM
-                   PERFORM 1200-LER-ENTRADA-ARQ02
-                      THRU 1200-LER-ENTRADA-ARQ02-FIM
-
+EXER06             PERFORM 1100-LER-ENTRADA
+EXER06                THRU 1100-LER-ENTRADA-FIM
+EXER06             PERFORM 1200-LER-ENTRADA-ARQ02
+EXER06                THRU 1200-LER-ENTRADA-ARQ02-FIM
+EXER06         ELSE
+EXER06             PERFORM 1100-LER-ENTRADA
+EXER06                THRU 1100-LER-ENTRADA-FIM
+EXER06             PERFORM 1200-LER-ENTRADA-ARQ02
+EXER06                THRU 1200-LER-ENTRADA-ARQ02-FIM
 EXER05         END-IF
-           ELSE
-               IF COD-CTA LESS THAN E2-COD-CTA
-                   PERFORM 1100-LER-ENTRADA
-                       THRU 1100-LER-ENTRADA-FIM
-               ELSE
-                   PERFORM 1200-LER-ENTRADA-ARQ02
-                       THRU 1200-LER-ENTRADA-ARQ02-FIM
-           END-IF.
-
+EXER06     ELSE
+EXER06         IF COD-CTA LESS THAN E2-COD-CTA
+EXER06             PERFORM 1100-LER-ENTRADA
+EXER06                 THRU 1100-LER-ENTRADA-FIM
+EXER06         ELSE
+EXER06             PERFORM 1200-LER-ENTRADA-ARQ02
+EXER06                 THRU 1200-LER-ENTRADA-ARQ02-FIM
+EXER06     END-IF.
 
 EXER04*         MOVE WSA-SAIDA TO REG-SAIDA
 EXER03*         WRITE REG-SAIDA
@@ -444,7 +470,7 @@ EXER05     WRITE REG-SAIDA.
 EXER05     PERFORM 2000-INSERI-LINHA-DESIGN.
 EXER05     MOVE WSA-DATELHE            TO REG-SAIDA.
 EXER05     WRITE REG-SAIDA.
-
+      *********** CLIENTE COM MAIOR SALDO EM CONTA CORRENTE ***********
 EXER05 2700-MAIOR-SALDO-CC.
 EXER05     MOVE WSA-AUXILIAR-COD       TO S02-COD-CTA.
 EXER05     MOVE WSA-AUXILIAR           TO S02-SLD-CTA.
@@ -452,7 +478,7 @@ EXER05     MOVE WSA-MAIOR-SDO-CC       TO REG-SAIDA.
 EXER05     WRITE REG-SAIDA BEFORE 2 LINES
 EXER05     MOVE WCA-DETALHE-CP TO REG-SAIDA
 EXER05     WRITE REG-SAIDA.
-
+      ******************************************************************
 EXER05 2800-MAIOR-SALDO-CP.
 EXER05     MOVE WSA-AUXILIAR-COD-CP    TO S03-COD-CTA.
 EXER05     MOVE WSA-AUXILIAR-CP        TO S03-SLD-CTA.
