@@ -1,0 +1,38 @@
+*==================================================================================*
+*                     RELATORIO MENSAL DO BANCO                       02/10/2019   *
+*==================================================================================*
+*               CLIENTES COM SALDO MAIOR QUE R$ 100.000,00                         *
+*==================================================================================*
+CODIGO  NOME DO CLIENTE         DATA CONTA        TIPO DA CONTA       SALDO DA CONTA
+0001  Mauricio Domingue         31/07/2007           C/C              R$  185.566,00
+0002  Paulo Rezende             12/08/2013           C/C              R$  135.258,00
+0003  Lucineida Nara            15/09/2009           POUP             R$  126.851,00
+0008  Bruna Manzi               12/06/2014           C/C              R$  231.983,45
+0010  Maria Lidia               21/09/2016           POUP             R$  145.216,66
+0017  Pedro Silva               06/06/2015           POUP             R$  236.478,03
+0017  Pedro Silva               06/06/2015           C/C              R$  105.090,00
+*==================================================================================*
+*                     RESUMO DAS CONTAS                                            *
+*==================================================================================*
+                  TOTAL DE CONTAS CORRENTES =   10
+                  TOTAL DE POUPANCAS        =   09
+
+                                  SALDO TOTAL DE CONTA CORRENTE = R$    1.032.949,14
+                                  SALDO TOTAL DE POUPANCA       = R$      798.287,50
+
+                                  SALDO TOTAL DAS CONTAS        = R$    1.831.236,64
+
+*==================================================================================*
+*                  DETALHES DE GERENTE                                             *
+*==================================================================================*
+  CLIENTE COM MAIOR SALDO EM CONTA CORRENTE
+                                           0008    Lucas Manzi         R$ 231.983,45
+
+  CLIENTE COM MAIOR SALDO EM CONTA POUPANCA
+                                           0017    Hudson Rocha        R$ 236.478,03
+
+  CLIENTE COM MENOR SALDO EM CONTA CORRENTE
+                                           0005    Luiz Biano          R$  17.597,00
+
+  CLIENTE COM MENOR SALDO EM POUPANCA
+                                           0016    Miriene Dayrell     R$  14.276,00

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 0001Conta Corrente18556600
 0002Conta Corrente13525800
 0003Conta Corrente08959590
@@ -16,4 +17,24 @@
 0016Poupanca      01427600
 0017Poupanca      23647803
 0017Conta Corrente10509000
+=======
+0001Conta Corrente18556600
+0002Conta Corrente13525800
+0003Conta Corrente08959590
+0003Poupanca      12685100
+0005Poupanca      06812703
+0005Conta Corrente01759700
+0007Poupanca      04648600
+0008Conta Corrente23198345
+0009Conta Corrente03456200
+0010Poupanca      14521666
+0011Poupanca      09383600
+0013Poupanca      04225700
+0013Conta Corrente08210600
+0014Poupanca      02475978
+0015Conta Corrente08653409
+0016Poupanca      01427600
+0017Poupanca      23647803
+0017Conta Corrente10509000
+>>>>>>> fc4eb318f1bf419679fc59f0577be2685a746e7a
 0019Conta Corrente06465670

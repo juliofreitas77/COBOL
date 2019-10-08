@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 01 ENTRADA.
    05 COD-CTA   PIC 9(04).
    05 TIP-CTA   PIC X(14).
    05 SLD-CTA   PIC 9(06)V99.
+=======
+01 ENTRADA.
+   05 COD-CTA   PIC 9(04).
+   05 TIP-CTA   PIC X(14).
+   05 SLD-CTA   PIC 9(06)V99.
+>>>>>>> fc4eb318f1bf419679fc59f0577be2685a746e7a

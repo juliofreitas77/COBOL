@@ -1,0 +1,24 @@
+*=====================================*
+*RELATORIO MENSAL DO BANCO
+*=====================================*
+CODIGO  TIPO DA CONTA   SALDO DA CONTA
+
+0000001 Conta Corrente  R$ 185.566,00
+0000002 Conta Corrente  R$ 135.258,00
+0000003 Conta Corrente  R$  89.595,90
+0000003 Poupanca        R$ 126.851,00
+0000005 Poupanca        R$  68.127,03
+0000005 Conta Corrente  R$  17.597,00
+0000007 Poupanca        R$  46.486,00
+0000008 Conta Corrente  R$ 231.983,45
+0000009 Conta Corrente  R$  34.562,00
+0000010 Poupanca        R$ 145.216,66
+0000011 Poupanca        R$  93.836,00
+0000013 Poupanca        R$  42.257,00
+0000013 Conta Corrente  R$  82.106,00
+0000014 Poupanca        R$  24.759,78
+0000015 Conta Corrente  R$  86.534,09
+0000016 Poupanca        R$  14.276,00
+0000017 Poupanca        R$ 236.478,03
+0000017 Conta Corrente  R$ 105.090,00
+0000019 Conta Corrente  R$  64.656,70

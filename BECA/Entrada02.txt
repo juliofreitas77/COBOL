@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 0001Mauricio Domingues       000720070731
 0002Paulo Rezende            001920130812
 0003Lucineida Nara           001920090915
@@ -17,3 +18,24 @@
 0017Pedro Silva              000720150606
 0018Arthur Maia              001920170909
 0019Rodrigo Pessoa           000820160909
+=======
+0001Mauricio Domingues       000720070731
+0002Paulo Rezende            001920130812
+0003Lucineida Nara           001920090915
+0004Lauro Pimenta            000420170223
+0005Luiz Biano               000720030912
+0006Bianca Oliveira          000320151221
+0007Lucas Manzi              000420160223
+0008Bruna Manzi              000720140612
+0009Jose Luiz Neto           001820180222
+0010Maria Lidia              000320160921
+0011Margareth Gomes          000720180615
+0012Lucas Lelis              001820160606
+0013Matheus Marafelli        000420170927
+0014Evandro Borges           001820150707
+0015Miriene Dayrell          000720180523
+0016Hudson Rocha             001920130708
+0017Pedro Silva              000720150606
+0018Arthur Maia              001920170909
+0019Rodrigo Pessoa           000820160909
+>>>>>>> fc4eb318f1bf419679fc59f0577be2685a746e7a
