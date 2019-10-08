@@ -1,0 +1,19 @@
+0001Araguari          MG
+0002Uberaba           MG
+0003Uberlandia        MG
+0004Patos de Minas    MG
+0005Patrocinio        MG
+0006Guarulhos         SP
+0007Sao Paulo         SP
+0008Santo Andre       SP
+0009Barueri           SP
+0010Vitoria           ES
+0011Curitiba          PR
+0012Goiania           GO
+0013Goianesia         GO
+0014Joao Pessoa       PB
+0015Fortaleza         CE
+0016Manaus            AM
+0017Palmas            TO
+0018Cabo Frio         RJ
+0019Rio de Janeiro    RJ
