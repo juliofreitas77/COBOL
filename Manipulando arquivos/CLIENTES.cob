@@ -1,0 +1,24 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. CLIENTES.
+      ***********************************
+      *OBJETIVO: SISTEMA DE GESTAO DE CLIENTS
+      *AUTHOR : JULIO CESAR S FREITAS
+      *
+
+       ENVIRONMENT DIVISION.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       77 WRK-OPCAO PIC X(1).
+
+       SCREEN SECTION.
+       01 TELA.
+           05 LIMPA-TELA.
+                   10 BLANK SCREEN.
+      * INSTRUCAO ERASE EOL - APAGUE ATE O FIN DA LINHA - END OF LINE
+                   10 LINE 01 COLUMN 01 PIC X(20) ERASE EOL
+                       BACKGROUND-COLOR 2 FROM 'MENU' .
+
+       PROCEDURE DIVISION.
+           DISPLAY TELA.
+           ACCEPT WRK-OPCAO.
+           STOP RUN.
