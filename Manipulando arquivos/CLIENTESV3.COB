@@ -1,5 +1,5 @@
        IDENTIFICATION DIVISION.
-       PROGRAM-ID.  CLIENTES.
+       PROGRAM-ID.  CLIENTESV3.
       *********************************
       * OBJETIVO:  SISTEMA DE GESTAO DE CLIENTES
       * AUTHOR  :  IVAN
@@ -17,10 +17,10 @@
        FILE SECTION.
        FD CLIENTES.
        01 CLIENTES-REG.
-            05 CLIENTES-CHAVE.
-                10 CLIENTES-FONE PIC 9(09).
-            05 CLIENTES-NOME     PIC X(30).
-            05 CLIENTES-EMAIL    PIC X(40).
+           05 CLIENTES-CHAVE.
+               10 CLIENTES-FONE PIC 9(09).
+           05 CLIENTES-NOME     PIC X(30).
+           05 CLIENTES-EMAIL    PIC X(40).
 
 
 
