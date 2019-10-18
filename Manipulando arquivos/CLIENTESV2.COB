@@ -6,6 +6,7 @@
       *
 
        ENVIRONMENT DIVISION.
+      ***********************COMMIT ABRINDO ARQUIVOS*******************
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
            SELECT CLIENTES
@@ -31,7 +32,7 @@
        77 WRK-OPCAO                PIC X(1).
        77 WRK-MODULO               PIC X(25).
        77 WRK-TECLA                PIC X(1).
-       77 CLIENTE-STATUS           PIC 9(2).
+       77 CLIENTE-STATUS          PIC 9(2).
 
        SCREEN SECTION.
        01 TELA.
@@ -56,6 +57,20 @@
            05 LINE 13 COLUMN 15 VALUE 'OPCAO......: '.
            05 LINE 13 COLUMN 28 USING WRK-OPCAO.
 
+      ****************COMMIT INCLUSÃO DE REGISTROS**********************
+       01 TELA-REGISTRO.
+           05 CHAVE FOREGROUND-COLOR 2.
+               10 LINE 10 COLUMN 10 VALUE 'TELEFONE '.
+               10 COLUMN PLUS 2 PIC 9(9) USING CLIENTES-FONE
+                   BLANK WHEN ZEROS.
+
+           05 SS-DADOS.
+               10 LINE 11 COLUMN 10 VALUE 'NOME...'.
+               10 COLUMN PLUS 2 PIC X(30) USING CLIENTES-NOME.
+               10 LINE 12 COLUMN 10 VALUE 'EMAIL...'.
+               10 COLUMN  PLUS 2 PIC X(40) USING CLIENTES-EMAIL.
+
+
        PROCEDURE DIVISION.
        0000-PRINCIPAL SECTION.
            PERFORM 1000-INICIAR.
@@ -65,6 +80,14 @@
 
 
            1000-INICIAR.
+               OPEN I-O CLIENTES
+               IF CLIENTE-STATUS = 35 THEN
+                   OPEN OUTPUT CLIENTES
+                   CLOSE CLIENTES
+                   OPEN I-O CLIENTES
+               END-IF.
+
+
                DISPLAY TELA.
                ACCEPT MENU.
 
@@ -87,11 +110,14 @@
                END-EVALUATE.
 
        3000-FINALIZAR.
-           CONTINUE.
+           CLOSE CLIENTES.
 
 
 
        5000-INCLUIR.
            MOVE ' MODULO - INCLUSAO ' TO WRK-MODULO.
            DISPLAY TELA.
-           ACCEPT WRK-TECLA  AT  1620.
+           ACCEPT TELA-REGISTRO.
+           WRITE CLIENTES-REG.
+           DISPLAY TELA.
+           ACCEPT MENU.
