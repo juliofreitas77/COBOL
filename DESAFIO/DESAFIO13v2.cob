@@ -22,7 +22,7 @@
        FILE SECTION.
        FD ARQUIVO-CALENDAR.
            01 REG-ENTRADA.
-               05 REGISTRO-STRING      PIC X(33).
+               05 REGISTRO-STRING      PIC X(100).
 
        WORKING-STORAGE SECTION.
        01 FIM-ARQUIVO PIC X.
@@ -32,36 +32,44 @@
        MAIN-PROCEDURE.
 
        1000-INICIAR.
-           OPEN INPUT ARQUIVO-CALENDAR.
-           MOVE "N" TO FIM-ARQUIVO.
+      *--->ABERTURA DO ARQUIVO
+           OPEN INPUT ARQUIVO-CALENDAR
+           MOVE "N" TO FIM-ARQUIVO
 
-           IF WS-FILE-STATUS EQUAL 00
-               PERFORM 2100-LER-REGISTRO
-               PERFORM 2200-EXIBIR-REGISTRO
-               UNTIL FIM-ARQUIVO EQUAL "S"
-           ELSE
-               DISPLAY "ARQUIVO SEM REGISTROS"
-               PERFORM 3000-FINALIZAR
-           END-IF.
+      *--->FAZ A LEITURA DO CABEÇALHO
+           PERFORM 2100-LER-REGISTRO
+           .
 
 
-       2000-PRINCIPAL.
+       2000-PRINCIPAL SECTION.
            PERFORM 1000-INICIAR
+      *---> VALIDA ABERTURA DO ARQUIVO
+           PERFORM 2300-VALIDA-OPEN-FILE.
+           PERFORM 2100-LER-REGISTRO
+           PERFORM 2200-EXIBIR-REGISTRO
+           UNTIL FIM-ARQUIVO EQUAL "S"
            .
 
        2100-LER-REGISTRO SECTION.
-           READ ARQUIVO-CALENDAR RECORD AT END
+           READ ARQUIVO-CALENDAR  AT END
            MOVE "S" TO FIM-ARQUIVO
+           END-READ
            .
 
        2200-EXIBIR-REGISTRO.
            DISPLAY REGISTRO-STRING
-      *     PERFORM 2200-EXIBIR-REGISTRO
            .
 
+       2300-VALIDA-OPEN-FILE.
+           IF WS-FILE-STATUS NOT EQUAL TO 00
+               DISPLAY "ERRO NA ABERTURA DO ARQUIVO"
+               PERFORM 3000-FINALIZAR
+           END-IF
+           .
 
        3000-FINALIZAR.
-                CLOSE ARQUIVO-CALENDAR.
-           STOP RUN.
+           CLOSE ARQUIVO-CALENDAR
+           STOP RUN
+           .
 
        END PROGRAM DESAFIO13.
